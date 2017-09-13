@@ -10,7 +10,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170707231751) do
+ActiveRecord::Schema.define(version: 20170706035343) do
+
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
 
   create_table "categories", force: :cascade do |t|
     t.string   "name"
@@ -31,15 +34,14 @@ ActiveRecord::Schema.define(version: 20170707231751) do
   end
 
   create_table "registers", force: :cascade do |t|
-    t.integer  "category_id"
+    t.integer  "category"
     t.integer  "race_id"
     t.integer  "rider_id"
     t.integer  "race_result"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
-    t.index ["category_id"], name: "index_registers_on_category_id"
-    t.index ["race_id"], name: "index_registers_on_race_id"
-    t.index ["rider_id"], name: "index_registers_on_rider_id"
+    t.index ["race_id"], name: "index_registers_on_race_id", using: :btree
+    t.index ["rider_id"], name: "index_registers_on_rider_id", using: :btree
   end
 
   create_table "riders", force: :cascade do |t|
@@ -57,4 +59,6 @@ ActiveRecord::Schema.define(version: 20170707231751) do
     t.datetime "updated_at", null: false
   end
 
+  add_foreign_key "registers", "races"
+  add_foreign_key "registers", "riders"
 end
