@@ -26,4 +26,9 @@ class RidersController < ApplicationController
   def destroy
     #TODO: destroy if don't have any relationship
   end
+
+  private
+  def rider_params
+    params.require(:rider).permit(:first_name, :last_name, :birthdate, :address, :city, :state, :phone, :email, :bood_type, :number)
+  end
 end
