@@ -1,51 +1,60 @@
-<%= form_with scope: :rider, url: riders_path do |form| %>
-  <p>
-    <%= form.label :first_name %><br>
-    <%= form.text_field :first_name %>
-  </p>
- 
-  <p>
-    <%= form.label :last_name %><br>
-    <%= form.text_area :last_name %>
-  </p>
+<div class="row">
+  <div class="col-sm-12 _margin-bottom-35px">
+    <%= form_with(model: @rider) do |form| %>
+      <div class="form-group">
+        <%= form.label :first_name %>
+        <%= form.text_field :first_name, class: 'form-control' %>
+       </div>
+     
+      <div class="form-group">
+        <%= form.label :last_name %>
+        <%= form.text_field :last_name, class: 'form-control' %>
+       </div>
 
-  <p>
-    <%= form.label :birthdate %>
-    <%= form.date_select  :birthdate %>
-  </p>
+      <div class="form-group">
+        <%= form.label :birthdate %>
+        <%= form.date_select  :birthdate, :start_year => Date.current.year, :end_year => 1920 , class: 'form-control'%>
+       </div>
 
-  <p>
-    <%= form.label :city %>
-    <%= form.text_field :city %>
-  </p>
-  
-   <p>
-    <%= form.label :state %>
-    <%= form.text_field :state %>
-  </p>
+      <div class="form-group">
+        <%= form.label :city %>
+        <%= form.text_field :city, class: 'form-control' %>
+       </div>
 
-  <p>    
-    <%= form.label :phone %>
-    <%= form.text_field :phone %>
-  </p>
+       <div class="form-group">
+        <%= form.label :address %>
+        <%= form.text_field :address, class: 'form-control' %>
+       </div>
+      
+       <div class="form-group">
+        <%= form.label :state %>
+        <%= form.select :state, options_for_select(STATES, ""), {:prompt => true}, { :class => 'form-control' } %>
+       </div>
 
-  <p>    
-    <%= form.label :email %>
-    <%= form.email_field :email %>
-  </p>
+      <div class="form-group">    
+        <%= form.label :phone %>
+        <%= form.text_field :phone, class: 'form-control' %>
+       </div>
 
-  <p>    
-    <%= form.label :bood_type %>
-    <%= form.email_field :bood_type %>
-  </p>
+      <div class="form-group">    
+        <%= form.label :email %>
+        <%= form.email_field :email, class: 'form-control' %>
+       </div>
 
-  <p>    
-    <%= form.label :number %>
-    <%= form.email_field :number %>
-  </p>
+      <div class="form-group">
+        <%= form.label :bood_type %>
+        <%= form.select :bood_type, options_for_select(BLOOD_TYPES, ""), {:prompt => true}, { :class => 'form-control' } %>
+      </div>
 
-  <p>
-    <%= form.submit %>
-  </p>
-<% end %>
 
+      <div class="form-group">    
+        <%= form.label :number %>
+        <%= form.number_field :number, :class => 'form-control' %>
+       </div>
+
+      <div class="form-group">
+        <%= form.submit "Guardar", :class => 'btn btn-primary' %>
+       </div>
+    <% end %>
+  </div>
+</div>
