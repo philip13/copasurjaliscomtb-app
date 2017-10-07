@@ -1,0 +1,43 @@
+<div class="row">
+  <div class="col-sm-12 text-center">
+    <h1>Detalles Corredor</h1>
+    <h2>Datos Personales</h2>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-sm-12 text-right">
+    <hr>
+    <%= link_to "Lista de Corrredores", riders_path, class: "btn btn-success" %>
+    <%= link_to "Editar Corrredore", edit_rider_path(@rider), class: "btn btn-primary" %>
+    <hr>
+  </div>
+  <div class="col-sm-6">
+    <dl class="dl-horizontal">
+      <dt>Nombre:</dt>
+      <dd><%= @rider.first_name %></dd>
+      <dt>Apellidos:</dt>
+      <dd><%= @rider.last_name %></dd>
+      <dt>Fecha De Nacimiento:</dt>
+      <dd><%= @rider.birthdate %></dd>
+      <dt>Direccion:</dt>
+      <dd><%= @rider.address %></dd>
+      <dt>Ciudad:</dt>
+      <dd><%= @rider.city %></dd>
+    </dl>
+  </div>
+    <div class="col-sm-6">
+    <dl class="dl-horizontal">
+      <dt>Estado:</dt>
+      <dd><%= @rider.state %></dd>
+      <dt>Teléfono:</dt>
+      <dd><%= @rider.phone %></dd>
+      <dt>Email: </dt>
+      <dd><%= @rider.email %></dd>
+      <dt>Tipo de Sangre:</dt>
+      <dd><%= @rider.bood_type %></dd>
+      <dt>Numero de Corredor:</dt>
+      <dd><%= @rider.number %></dd>
+    </dl>
+  </div>
+</div>
