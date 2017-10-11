@@ -1,0 +1,44 @@
+<div class="row">
+  <div class="col-sm-12 text-center">
+    <h1>Carreras de:</h1>
+  </div>
+  <div class="col-sm-12">
+    <blockquote>
+      <p><%= "#{@rider.first_name} #{@rider.last_name}" %></p>
+    </blockquote>
+  </div>
+  <div class="col-sm-12 text-right">
+    <hr>
+    <%= link_to "Registrar Carrera", new_rider_register_path(rider_id: @rider.id), class: "btn btn-primary" %>
+    <%#= link_to "Editar Corrredore", edit_rider_path(@rider), class: "btn btn-primary" %>
+    <hr>
+  </div>
+
+  <table class="table table-hover">
+    <thead>
+      <tr>
+        <th>Category</th>
+        <th>Fecha</th>
+        <th>Lugar</th>
+        <th>puntos</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @registers.each do |register| %>
+        <tr>
+          <td><%= (Category.find  register.category).name %></td>
+          <td><%= (Race.find register.race_id).title %></td>
+          <td><%= register.race_result %></td>
+          <td><%= register.points %></td>
+          <td class="text-right">
+            <%= link_to "<span class='glyphicon glyphicon-pencil'></span>".html_safe, edit_rider_register_path(rider_id: register.rider_id, id: register.id), class: "btn btn-xs btn-primary" %>
+            <%= link_to "<span class='glyphicon glyphicon-eye-open'></span>".html_safe, rider_register_path(rider_id: register.rider_id, id: register.id), class: "btn btn-xs btn-info" %>
+            <%= link_to "<span class='glyphicon glyphicon glyphicon-trash'></span>".html_safe, rider_register_path(rider_id: register.rider_id, id: register.id),
+                    method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-xs btn-warning" %> 
+          </td>
+        </tr>
+      <%end%>
+    </tbody>
+  </table>
+</div>
