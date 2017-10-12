@@ -8,6 +8,8 @@
 <div class="row">
   <div class="col-sm-12 text-right">
     <hr>
+    <%= link_to "Ver Carreras", rider_registers_path(rider_id: @rider.id), class: "btn btn-primary" %>
+    <%= link_to "Registrar Carrera", new_rider_register_path(rider_id: @rider.id), class: "btn btn-primary" %>
     <%= link_to "Lista de Corrredores", riders_path, class: "btn btn-success" %>
     <%= link_to "Editar Corrredore", edit_rider_path(@rider), class: "btn btn-primary" %>
     <hr>
@@ -20,14 +22,19 @@
       <dd><%= @rider.last_name %></dd>
       <dt>Fecha De Nacimiento:</dt>
       <dd><%= @rider.birthdate %></dd>
+
+      <dt>Categoria:</dt>
+      <dd> <%= Category.find(@rider.category_id).name %></dd>
+      
       <dt>Direccion:</dt>
       <dd><%= @rider.address %></dd>
-      <dt>Ciudad:</dt>
-      <dd><%= @rider.city %></dd>
+      
     </dl>
   </div>
     <div class="col-sm-6">
     <dl class="dl-horizontal">
+      <dt>Ciudad:</dt>
+      <dd><%= @rider.city %></dd>
       <dt>Estado:</dt>
       <dd><%= @rider.state %></dd>
       <dt>Teléfono:</dt>
@@ -41,3 +48,5 @@
     </dl>
   </div>
 </div>
+
+

@@ -23,7 +23,7 @@
         <tr>
           <td><%= rider.number %></td>
           <td><%= rider.first_name %> <%= rider.last_name %></td>
-          <td> / </td>
+          <td><%= Category.find(rider.category_id).name %> </td>
           <td class="text-right">
             <%= link_to "<span class='glyphicon glyphicon-pencil'></span>".html_safe, edit_rider_path(rider), class: "btn btn-xs btn-primary" %>
             <%= link_to "<span class='glyphicon glyphicon-eye-open'></span>".html_safe, rider_path(rider), class: "btn btn-xs btn-info" %>  
