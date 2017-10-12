@@ -1,4 +1,5 @@
 class RidersController < ApplicationController
+  before_action :authenticate_user!
   before_action :find_rider, :only => [:show, :edit, :update]
   before_action :get_all_categories, :only => [ :new, :create, :edit, :update]
   def index
