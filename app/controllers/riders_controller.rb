@@ -1,5 +1,6 @@
 class RidersController < ApplicationController
-    before_action :find_rider, :only => [:show, :edit, :update]
+  before_action :find_rider, :only => [:show, :edit, :update]
+  before_action :get_all_categories, :only => [ :new, :create, :edit, :update]
   def index
     @riders = Rider.all
   end
@@ -40,7 +41,7 @@ class RidersController < ApplicationController
 
   private
   def rider_params
-    params.require(:rider).permit(:first_name, :last_name, :birthdate, :address, :city, :state, :phone, :email, :bood_type, :number)
+    params.require(:rider).permit(:first_name, :last_name, :birthdate, :address, :city, :state, :phone, :email, :bood_type, :number, :category_id)
   end
 
   def find_rider
