@@ -21,10 +21,10 @@
   </head>
 
   <body>
-    <%= render :partial => 'shared/flash_message' %>
     <%= render :partial => 'shared/navbar' %>
     <div class="container _margin-bottom-35px">
-     <%= yield %>
+      <%= render :partial => 'shared/flash_message' %>
+      <%= yield %>
     </div>
     <%= render :partial => 'shared/footer' %>
   </body>
