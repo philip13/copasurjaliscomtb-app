@@ -1,5 +1,6 @@
 class RacesController < ApplicationController
-    before_action :find_race, :only => [:show, :edit, :update]
+  before_action :authenticate_user!
+  before_action :find_race, :only => [:show, :edit, :update]
   def index
     @races = Race.all
   end
