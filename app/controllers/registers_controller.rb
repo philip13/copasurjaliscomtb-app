@@ -18,7 +18,7 @@ class RegistersController < ApplicationController
  
     if @register.valid?
       @rider.registers << @register
-      redirect_to rider_register_path(rider_id: @rider.id)
+      redirect_to rider_registers_path(rider_id: @rider.id)
     else
       render 'new'
     end
@@ -58,8 +58,5 @@ class RegistersController < ApplicationController
     @races =  Race.all.map{|r| [] << r.title  << r.id}
   end
 
-  def get_all_categories
-    @categories =  Category.all.map{|c| [] << c.name  << c.id}
-  end
 end
 
