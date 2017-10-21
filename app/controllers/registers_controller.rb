@@ -32,6 +32,11 @@ class RegistersController < ApplicationController
   end
 
   def update
+    if @register.update(register_params)
+      redirect_to rider_registers_path(rider_id: @rider.id)
+    else
+      render 'edit'
+    end
   end
 
   def destroy
