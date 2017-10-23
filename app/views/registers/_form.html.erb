@@ -1,6 +1,7 @@
 <div class="row">
   <div class="col-sm-12 _margin-bottom-35px">
-   <%= form_for [@rider, @register], url: rider_registers_path do |form| %>
+    <% url_form = @register.new_record? ? rider_registers_path : rider_register_path %>
+   <%= form_for [@rider, @register], url: url_form do |form| %>
 
        <% if @register.errors.any? %>
         <% @register.errors.full_messages.each do |message| %>
