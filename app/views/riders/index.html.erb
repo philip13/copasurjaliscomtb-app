@@ -2,11 +2,40 @@
   <div class="col-sm-12 text-center">
     <h1>Lista de Corredor</h1>
   </div>
+
   <div class="col-sm-12 text-right">
+    <%= link_to "INFANTIL b", riders_path(:category => "INFANTIL c"), class: "btn btn-info btn-sm" %>
+    <%= link_to "INFANTIL b", riders_path(:category => "INFANTIL b"), class: "btn btn-info btn-sm" %>
+    <%= link_to "INFANTIL a", riders_path(:category => "INFANTIL a"), class: "btn btn-info btn-sm" %>
+    <%= link_to "INFANTIL aa", riders_path(:category => "INFANTIL aa"), class: "btn btn-info btn-sm" %>
+  </div>
+  <div class="col-sm-12 text-right">
+    <%= link_to "Principiantas Libre", riders_path(:category => "Principiantas Libre"), class: "btn btn-primary btn-sm" %>
+    <%= link_to "Femenil Avanzadas", riders_path(:category => "Femenil Avanzadas"), class: "btn btn-primary btn-sm" %>
+    <%= link_to "Juvenil Mayor", riders_path(:category => "Juvenil Mayor"), class: "btn btn-primary btn-sm" %>
+    <%= link_to "Infantil Menor", riders_path(:category => "Infantil Menor"), class: "btn btn-primary btn-sm" %>
+    <%= link_to "Veteranos 50+", riders_path(:category => "Veteranos 50+"), class: "btn btn-primary btn-sm" %>
+  </div>
+
+  <div class="col-sm-12 text-right">
+    <%= link_to "Veteranos 50+", riders_path(:category => "Veteranos 50+"), class: "btn btn-warning btn-sm" %>
+    <%= link_to "Principiantas Libre", riders_path(:category => "Principiantas Libre"), class: "btn btn-warning btn-sm" %>
+    <%= link_to "Femenil Avanzadas", riders_path(:category => "Femenil Avanzadas"), class: "btn btn-warning btn-sm" %>
+    <%= link_to "Juvenil Mayor", riders_path(:category => "Juvenil Mayor"), class: "btn btn-warning btn-sm" %>
+    <%= link_to "Infantil Menor", riders_path(:category => "Infantil Menor"), class: "btn btn-warning btn-sm" %>
+    <%= link_to "Infantil Avanzados", riders_path(:category => "Infantil Avanzados"), class: "btn btn-warning btn-sm" %>
+  </div>
+  <div class="col-sm-12 text-right">
+    <%= link_to "Master 40", riders_path(:category => "Master 40"), class: "btn btn-success btn-sm" %>
+    <%= link_to "Master 30", riders_path(:category => "Master 30"), class: "btn btn-success btn-sm" %>
+    <%= link_to "Femenil Expertas", riders_path(:category => "Femenil Expertas"), class: "btn btn-success btn-sm" %>
+    <%= link_to "Avanzados", riders_path(:category => "Avanzados"), class: "btn btn-success btn-sm" %>
+    <%= link_to "Elit", riders_path(:category => "Elit"), class: "btn btn-success btn-sm" %>
     <hr>
+  </div>
+  <div class="col-sm-12 text-right">
     <%= link_to "Nuevo Corredor", new_rider_path, class: "btn btn-primary" %>
-    <%#= link_to "Editar Corrredore", edit_rider_path(@rider), class: "btn btn-primary" %>
-    <hr>
+    <%= link_to "Ver Todos", riders_path, class: "btn btn-success" %>
   </div>
 
   <table class="table table-hover">
@@ -25,6 +54,7 @@
           <td><%= rider.first_name %> <%= rider.last_name %></td>
           <td><%= Category.find(rider.category_id).name %> </td>
           <td class="text-right">
+            <%= link_to "<span class='glyphicon glyphicon-tasks'></span>".html_safe, rider_registers_path(rider_id: rider.id), class: "btn btn-xs btn-default" %>
             <%= link_to "<span class='glyphicon glyphicon-pencil'></span>".html_safe, edit_rider_path(rider), class: "btn btn-xs btn-primary" %>
             <%= link_to "<span class='glyphicon glyphicon-eye-open'></span>".html_safe, rider_path(rider), class: "btn btn-xs btn-info" %>  
           </td>
