@@ -60,7 +60,7 @@ class RegistersController < ApplicationController
   end
 
   def get_all_races 
-    @races =  Race.all.map{|r| [] << r.title  << r.id}
+    @races =  Race.all.order("date asc").map{|r| [] << r.title  << r.id}
   end
 
 end
