@@ -1,7 +1,8 @@
 class RidersController < ApplicationController
   before_action :authenticate_user!
+
   before_action :find_rider, :only => [:show, :edit, :update]
-  before_action :get_all_categories, :only => [ :new, :create, :edit, :update]
+  before_action :get_all_categories, :only => [ :new, :create, :edit, :update, :index]
   def index
     @category_filter = Category.find_by(name: params[:category] )
     @riders = @category_filter.nil?  ? Rider.all.order(:category_id) : ( Rider.get_riders_by_category_id( @category_filter.id))
