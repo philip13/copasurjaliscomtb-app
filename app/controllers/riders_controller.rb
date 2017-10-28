@@ -2,10 +2,15 @@ class RidersController < ApplicationController
   before_action :authenticate_user!
 
   before_action :find_rider, :only => [:show, :edit, :update]
-  before_action :get_all_categories, :only => [ :new, :create, :edit, :update, :index]
+  before_action :get_all_categories, :only => [ :new, :create, :edit, :update, :index, :search_riders]
+  
   def index
-    @category_filter = Category.find_by(name: params[:category] )
-    @riders = @category_filter.nil?  ? Rider.all.order(:category_id) : ( Rider.get_riders_by_category_id( @category_filter.id))
+     params[:category_id] = params[:category_id].blank? ? 1 : params[:category_id]
+    @riders = Rider.get_riders_by_category_id( params[:category_id] ).order(:category_id)
+    respond_to do |format|
+      format.html
+      format.js
+    end
   end
 
   def new
@@ -25,6 +30,15 @@ class RidersController < ApplicationController
 
   def show
     #TODO: SHOW A RIDER IFORMATION
+  end
+
+  def search_riders
+    search_rider = params[:search_rider]
+    @riders = Rider.where("first_name ILIKE(?) OR last_name ILIKE(?)", search_rider, search_rider)
+    respond_to do |format|
+      format.html {redirect_to riders_path}
+      format.js
+    end
   end
 
   def edit
