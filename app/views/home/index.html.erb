@@ -1,2 +1,24 @@
-<h1>Home#index</h1>
-<p>Find me in app/views/home/index.html.erb</p>
+<div class="row">
+  <div class="col-sm-12 text-center">
+    <h1>Ranking Copa Sur Jalisco MTB 2017</h1>
+  </div>
+  <div class="col-sm-12">
+     <ul class="nav nav-pills">
+      <%@categories.each_with_index do |category, index| %>
+        <li class="<%= 'active' if index == 0 %>" id="<%= category[1] %>">
+          <%= link_to category[0].upcase, root_path(category:  category[1]),  {:remote => true }%>
+        </li>
+      <%end%>
+    </ul>
+    <hr/>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-sm-12">
+    <div class="table-responsive" id="home-ranking-riders-table">
+      <%= render :partial => 'ranking_riders_table', :locals => {riders_results: @riders_results } %>
+    </div>
+  </div>
+</div>
+
