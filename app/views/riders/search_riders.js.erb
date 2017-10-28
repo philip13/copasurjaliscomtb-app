@@ -1,0 +1,5 @@
+<% unless @riders.empty? %>
+  $("#riders-index-table").html("<%= j (render  :partial => 'riders', :locals => {riders: @riders} ) %>");
+<%else%>
+   $("#riders-index-table").html("Sin Resultados");
+<%end%>
