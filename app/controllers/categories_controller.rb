@@ -1,6 +1,6 @@
 class CategoriesController < ApplicationController
   before_action :authenticate_user!
-  before_action :find_category, :only => [:show, :edit, :update]
+  before_action :find_category, :only => [:show, :edit, :update, :destroy]
   def index
     @categories = Category.all
   end
@@ -36,12 +36,13 @@ class CategoriesController < ApplicationController
   end
 
   def destroy
-    #TODO: destroy if don't have any relationship
+    @category.destroy!  if Register.where("category = ?", @category.id).empty?
+    redirect_to categories_path
   end
 
   private
   def category_params
-    params.require(:category).permit(:name, :code, :years_range, :laps, :city, :state, :phone, :email, :bood_type, :number)
+    params.require(:category).permit(:name, :code, :years_range, :laps, :city, :state, :phone, :email, :bood_type, :number, :group)
   end
 
   def find_category
