@@ -43,3 +43,7 @@ STATES =[
 "Yucatán",
 "Zacatecas",
 ]
+
+CATEGORY_GROUPS = [
+  "PRIMER GRUPO", "SEGUNDO GRUPO", "INFANTILES"
+]
