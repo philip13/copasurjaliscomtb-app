@@ -6,39 +6,29 @@
   <div class="col-sm-12 text-right">
      <ul class="nav nav-pills">
       <%@categories.each_with_index do |category, index| %>
-          <li class="" id="<%= category[1] %>">
-            <%= link_to category[0].upcase, riders_path(:category => category[0]) %>
+          <li class="<%= 'active' if params[:category_id] == category[1]%>" id="<%= category[1] %>">
+            <%= link_to category[0].upcase, riders_path(:category_id => category[1]),  {:remote => true } %>
           </li>
         <%end%>
       </ul>
   </div>
+
+  <div class="col-sm-12">
+    <%#= form_tag(search_riders_path(), remote: true, method: "get") do %>
+      <%#= text_field_tag(:search_riders, class: 'form-control' ) %>
+      <%#= submit_tag("Buscar", class: "btn btn-primary")%>
+    <%#end%>
+  </div>
+
   <div class="col-sm-12 text-right">
     <%= link_to "Nuevo Corredor", new_rider_path, class: "btn btn-primary" %>
     <%= link_to "Ver Todos", riders_path, class: "btn btn-success" %>
   </div>
 
-  <table class="table table-hover">
-    <thead>
-      <tr>
-        <th>#</th>
-        <th>Nombre</th>
-        <th>Categoria</th>
-        <th></th>
-      </tr>
-    </thead>
-    <tbody>
-      <% @riders.each do |rider| %>
-        <tr>
-          <td><%= rider.number %></td>
-          <td><%= rider.first_name %> <%= rider.last_name %></td>
-          <td><%= Category.find(rider.category_id).name %> </td>
-          <td class="text-right">
-            <%= link_to "<span class='glyphicon glyphicon-tasks'></span>".html_safe, rider_registers_path(rider_id: rider.id), class: "btn btn-xs btn-default" %>
-            <%= link_to "<span class='glyphicon glyphicon-pencil'></span>".html_safe, edit_rider_path(rider), class: "btn btn-xs btn-primary" %>
-            <%= link_to "<span class='glyphicon glyphicon-eye-open'></span>".html_safe, rider_path(rider), class: "btn btn-xs btn-info" %>  
-          </td>
-        </tr>
-      <%end%>
-    </tbody>
-  </table>
+  <div class="col-sm-12">
+    <div class="table-responsive" id="riders-index-table">
+      <%= render :partial => 'riders', :locals => {riders: @riders} %>
+    </div>
+  </div>
+    
 </div>
