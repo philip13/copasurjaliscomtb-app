@@ -29,7 +29,10 @@
         <tbody>
           <% @registers.each do |register| %>
             <tr>
-              <td><%= (Category.find  register.category).name %></td>
+
+              <td> 
+                <%= (Category.find  register.category).name  unless register.category.nil?   %>
+              </td>
               <td><%= (Race.find register.race_id).title %></td>
               <td><%= register.race_result %></td>
               <td><%= register.points %></td>
