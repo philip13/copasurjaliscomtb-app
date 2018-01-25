@@ -1,0 +1,22 @@
+<table class="table table-bordered table-striped table-hover">
+  <thead>
+    <tr class="success">
+      <th>Lugar</th>
+      <th>Nombre</th>
+      <th>Puntos</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% riders_results.each_with_index  do |riders_results, index| %>
+      <tr>
+        <td><%=index +1 %></td>
+        <td><%= riders_results.first_name %> <%= riders_results.last_name %></td>
+        <td><%= riders_results.points_earned %></td>
+        <td class="text-right">
+          <%= link_to "<span class='glyphicon glyphicon-eye-open'></span>".html_safe, rider_registers_path(rider_id: riders_results.rider_id), class: "btn btn-xs btn-info" %>  
+        </td>
+      </tr>
+    <%end%>
+  </tbody>
+</table>

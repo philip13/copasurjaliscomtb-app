@@ -1,0 +1,33 @@
+<nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="/"><img src="<%= image_path('brand-img.png') %>" class="img-logo"></a>
+    </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav">
+        <li class=""><a href="/">Home</a></li>
+        <% if user_signed_in? %>
+          <li class=""><a href="/riders">Riders</a></li>
+          <li class=""><a href="/races">Carreras</a></li>
+          <li class=""><a href="/categories">Categorias</a></li>
+        <%end%>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <% if user_signed_in? %>
+          <li class="warning"><%= link_to 'Logout', destroy_user_session_path, :method => :delete%></li>
+        <%else%>
+          <li><%= link_to 'Login', user_session_path%> </li>
+        <%end%>
+      </ul>
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+</nav>

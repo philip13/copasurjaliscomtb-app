@@ -12,5 +12,26 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require bootstrap-sprockets
 //= require turbolinks
 //= require_tree .
+
+var auto_setting_points ={
+  to_race_result: function(){
+    var result = parseInt( $("#register_race_result").val() );
+    var points = 5;
+    if (! isNaN(result) ){
+      if( result < 10 ){
+        points = (50-((result-1 )*5));
+      }else{ points = 5; }
+      
+    }
+    $("#register_points").val(points);
+  }
+}
+
+document.addEventListener("turbolinks:load", function() {
+  $("#register_race_result").on('input', function() {
+    auto_setting_points.to_race_result();
+  });
+});
