@@ -7,6 +7,6 @@ class Register < ApplicationRecord
   end
 
   def self.get_general_clasification_by_category category_id, start_date, end_date
- self.joins(:rider, :race).select("riders.first_name as first_name, riders.last_name as last_name,  SUM (registers.points) as points_earned, registers.category, registers.rider_id ").where("registers.category = ? AND (races.date >= ? OR races.date <= ? )", category_id, start_date, end_date).group("registers.rider_id, riders.first_name,  riders.last_name, registers.category,  registers.rider_id").order("points_earned desc")
+ self.joins(:rider, :race).select("riders.first_name as first_name, riders.last_name as last_name,  SUM (registers.points) as points_earned, registers.category, registers.rider_id ").where("registers.category = ? AND (races.date >= ? AND races.date <= ? )", category_id, start_date, end_date).group("registers.rider_id, riders.first_name,  riders.last_name, registers.category,  registers.rider_id").order("points_earned desc")
   end
 end
