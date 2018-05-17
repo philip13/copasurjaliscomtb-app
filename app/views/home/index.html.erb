@@ -6,7 +6,7 @@
      <ul class="nav nav-pills">
       <%@categories.each_with_index do |category, index| %>
         <li class="<%= 'active' if category[0]  == 'Elite' %>" id="<%= category[1] %>">
-          <%= link_to category[0].upcase, root_path(category:  category[1]),  {:remote => true }%>
+          <%= link_to "#{category[0]}".upcase, root_path(category:  category[1]),  {:remote => true }%>
         </li>
       <%end%>
     </ul>
