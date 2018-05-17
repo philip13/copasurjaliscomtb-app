@@ -5,7 +5,7 @@ class RidersController < ApplicationController
   before_action :get_all_categories, :only => [ :new, :create, :edit, :update, :index, :search_riders]
   
   def index
-     params[:category_id] = params[:category_id].blank? ? 1 : params[:category_id]
+    params[:category_id] = params[:category_id].blank? ? Category.first.id : params[:category_id]
     @riders = Rider.get_riders_by_category_id( params[:category_id] ).order(:category_id)
     respond_to do |format|
       format.html
@@ -33,11 +33,15 @@ class RidersController < ApplicationController
   end
 
   def search_riders
-    search_rider = params[:search_rider]
-    @riders = Rider.where("first_name ILIKE(?) OR last_name ILIKE(?)", search_rider, search_rider)
+    search_rider = params[:rider_name]
+    unless search_rider.blank?
+      @riders = Rider.search_full_name(search_rider)
+    else
+      @riders = Rider.get_riders_by_category_id( Category.first.id ).order(:category_id)
+    end
     respond_to do |format|
       format.html {redirect_to riders_path}
-      format.js
+      format.js 
     end
   end
 
