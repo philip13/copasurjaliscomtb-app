@@ -1,24 +1,30 @@
-<div class="row">
-  <div class="col-sm-12 text-center">
-    <h1>Ranking Copa Sur Jalisco MTB 2017</h1>
+<div class="container-fluid">
+  <div class="row raking-container">
+    <div class="col-sm-12 text-center">
+      <h1>Ranking Copa Sur Jalisco MTB</h1>
+    </div>
+    <div class="col-sm-8 col-sm-offset-2 text-center">
+        <a href="/ranking/2017" class="btn btn-primary btn-lg">2017</a>
+        <a href="/ranking/2018" class="btn btn-success btn-lg">2018</a>
+    </div>
   </div>
-  <div class="col-sm-12">
-     <ul class="nav nav-pills">
-      <%@categories.each_with_index do |category, index| %>
-        <li class="<%= 'active' if category[0]  == 'Elite' %>" id="<%= category[1] %>">
-          <%= link_to "#{category[0]}".upcase, root_path(category:  category[1]),  {:remote => true }%>
-        </li>
-      <%end%>
-    </ul>
-    <hr/>
-  </div>
-</div>
 
-<div class="row">
-  <div class="col-sm-12">
-    <div class="table-responsive" id="home-ranking-riders-table">
-      <%= render :partial => 'ranking_riders_table', :locals => {riders_results: @riders_results } %>
+  <div class="row results-mtb-container">
+    <div class="col-sm-12 text-center">
+      <h2> Resultados Por Fechas MTB</h2>
+    </div>
+    <div class="col-sm-8 col-sm-offset-2 text-center">
+      <a href="/races_of/2017" class="btn btn-primary btn-lg"> 2017</a>
+      <a href="/races_of/2018" class="btn btn-success btn-lg">2018</a>
+    </div>
+  </div>
+
+  <div class="row results-road-container">
+    <div class="col-sm-12 text-center">
+      <h2> Gran Fondo 200km La Garita 2018</h2>
+    </div>
+    <div class="col-sm-8 col-sm-offset-2 text-center">
+      <a href="/road" class="btn btn-warning btn-lg">2018</a>
     </div>
   </div>
 </div>
-

@@ -1,28 +1,29 @@
-<div class="row">
-  <div class="col-sm-12 text-center">
-    <h1>Detalles Corredor</h1>
-    <h2>Datos Personales</h2>
+<div class="container">
+  <div class="row">
+    <div class="col-sm-12 text-center">
+      <h1>Detalles Corredor</h1>
+      <h2>Datos Personales</h2>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-sm-12 text-right">
+      <hr>
+      <%= link_to "Lista de Categorias", categories_path, class: "btn btn-success" %>
+      <%= link_to "Editar Categorias", edit_category_path(@category), class: "btn btn-primary" %>
+      <hr>
+    </div>
+    <div class="col-sm-6">
+      <dl class="dl-horizontal">
+        <dt>Nombre:</dt>
+        <dd><%= @category.name %></dd>
+        <dt>Codigo/ Letra:</dt>
+        <dd><%= @category.code %></dd>
+        <dt>Años:</dt>
+        <dd><%= @category.years_range %></dd>
+        <dt>Vueltas:</dt>
+        <dd><%= @category.laps %></dd>
+      </dl>
+    </div>
   </div>
 </div>
-
-<div class="row">
-  <div class="col-sm-12 text-right">
-    <hr>
-    <%= link_to "Lista de Categorias", categories_path, class: "btn btn-success" %>
-    <%= link_to "Editar Categorias", edit_category_path(@category), class: "btn btn-primary" %>
-    <hr>
-  </div>
-  <div class="col-sm-6">
-    <dl class="dl-horizontal">
-      <dt>Nombre:</dt>
-      <dd><%= @category.name %></dd>
-      <dt>Codigo/ Letra:</dt>
-      <dd><%= @category.code %></dd>
-      <dt>Años:</dt>
-      <dd><%= @category.years_range %></dd>
-      <dt>Vueltas:</dt>
-      <dd><%= @category.laps %></dd>
-    </dl>
-  </div>
-</div>
-
