@@ -4,10 +4,10 @@ class ApplicationController < ActionController::Base
 
   private
   def get_all_categories
-    if action_name == 'index' && controller_name == 'home'
-      @categories =  (Category.get_all_categories_by_groups_order(Date.new(2017, 12, 31) ) ).map{|c| [] << c.name  << c.id}
+    if action_name == 'ranking' && controller_name == 'home'
+      @categories =  (Category.get_all_categories_by_groups_order(Date.new(params[:year].to_i, 12, 31) ) ).map{|c| [] << c.name  << c.id << c.active}
     else
-      @categories = Category.get_all_categories_by_groups_order(Date.today+1.day ).map{|c| [] << c.name  << c.id}
+      @categories = Category.get_all_categories_by_groups_order(Date.today+1.day ).map{|c| [] << c.name  << c.id << c.active}
     end
   end
 end
