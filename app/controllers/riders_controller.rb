@@ -1,8 +1,8 @@
 class RidersController < ApplicationController
   before_action :authenticate_user!
 
-  before_action :find_rider, :only => [:show, :edit, :update]
-  before_action :get_all_categories, :only => [ :new, :create, :edit, :update, :index, :search_riders]
+  before_action :find_rider, :only => [:show, :edit, :update, :destroy]
+  before_action :get_all_categories_picklist, :only => [ :new, :create, :edit, :update, :index, :search_riders]
   
   def index
     params[:category_id] = params[:category_id].blank? ? Category.first.id : params[:category_id]
@@ -57,7 +57,13 @@ class RidersController < ApplicationController
   end
 
   def destroy
-    #TODO: destroy if don't have any relationship
+    if @rider.registers.empty?
+      flash[:notice] = "Rider destroy successfully"
+      redirect_to riders_path()
+    else
+      flash[:alert] = "Rider can'r destroy / first remove other information "
+      redirect_to riders_path()
+    end
   end
 
   private
