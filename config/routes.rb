@@ -1,6 +1,12 @@
 Rails.application.routes.draw do
   devise_for :users
   get 'home/index'
+  get '/ranking/:year', to: 'home#ranking', as: 'ranking'
+  get '/races_of/:year', to: 'home#races_of_year', as: 'races_of_year'
+  get '/races/results/:race_id', to: 'home#race_results', as: 'race_results'
+  get "/road", to: 'home#road', as: "road"
+
+  get '/donation/', to: 'home#donation', as: 'donation'
   root 'home#index'
 
   resources :riders do
