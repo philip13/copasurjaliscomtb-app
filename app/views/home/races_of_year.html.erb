@@ -1,0 +1,7 @@
+<h1>Carreras Copa Sur <%= @year%></h1>
+
+
+<% @races.each do |race| %>
+  <%= link_to "#{race.title} #{race.date}", race_results_path(race_id: race.id) %>
+  <br>
+<%end%>

@@ -1,0 +1,8 @@
+<% category_active = params[:category].blank? ? 1 : params[:category] %>
+$("ul.nav.nav-pills").find(".active").removeClass("active");
+$("ul.nav.nav-pills").find("#<%=category_active%>").addClass("active");
+<% unless @riders_results.empty? %>
+  $("#home-ranking-riders-table").html("<%= j (render :partial => 'ranking_riders_table', :locals => {riders_results: @riders_results } ) %>");
+<%else%>
+   $("#home-ranking-riders-table").html("Sin Resultados");
+<%end%>

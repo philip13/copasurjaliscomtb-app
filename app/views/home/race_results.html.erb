@@ -1,0 +1,33 @@
+<div class="container">
+  <div class="row">
+    <div class="col-sm-12 text-center">
+      <h2>Fecha <%= @race.date %></h2>
+      <h1><%=@race.title %></h1>
+
+    </div>
+    <div class="col-sm-12">
+       <ul class="nav nav-pills">
+        <% @categories.each_with_index do |category, index| %>
+          <% if @race.date.year == 2017 %>
+            <li class="<%= 'active' if category[0]  == 'Elite' %>" id="<%= category[1] %>">
+              <%= link_to "#{category[0]}".upcase , race_results_path(race_id: @race.id, category: category[1])%>
+            </li>
+          <%elsif category[2] %>
+            <li class="<%= 'active' if category[0]  == 'Elite' %>" id="<%= category[1] %>">
+              <%= link_to "#{category[0]}".upcase , race_results_path(race_id: @race.id, category: category[1])%>
+            </li>
+          <%end%>
+        <%end%>
+      </ul>
+      <hr/>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-sm-12">
+      <div class="table-responsive" id="home-ranking-riders-table">
+        <%= render :partial => 'ranking_riders_table', :locals => {riders_results: @riders_results } %>
+      </div>
+    </div>
+  </div>
+</div>
