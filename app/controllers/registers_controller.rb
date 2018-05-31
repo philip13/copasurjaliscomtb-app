@@ -1,6 +1,6 @@
 class RegistersController < ApplicationController 
   before_action :authenticate_user! , :except => [:index]
-  before_action :get_all_races, :get_all_categories, :only => [ :new, :create, :edit, :update]
+  before_action :get_all_races, :get_all_categories_picklist, :only => [ :new, :create, :edit, :update]
   before_action :find_rider, :only => [ :new, :create, :edit, :update, :index, :destroy]
 
   before_action :find_register, :only => [:show, :edit, :update, :destroy]
