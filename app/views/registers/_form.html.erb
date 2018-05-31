@@ -12,6 +12,7 @@
       <%= form.hidden_field :rider_id, :value => @rider.id %>
       <div class="form-group">
         <%= form.label :category %>
+        
         <%= form.select :category, options_for_select(@categories, @register.category), {:prompt => true }, { :class => 'form-control' } %>
        </div>
 

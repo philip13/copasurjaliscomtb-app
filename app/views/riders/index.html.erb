@@ -1,38 +1,41 @@
-<div class="row">
-  <div class="col-sm-12 text-center">
-    <h1>Lista de Corredor</h1>
-  </div>
-
-
-  <div class="col-sm-12 text-right">
-     <ul class="nav nav-pills">
-      <%@categories.each_with_index do |category, index| %>
-          <li class="<%= 'active' if params[:category_id] == category[1]%>" id="<%= category[1] %>">
-            <%= link_to category[0].upcase, riders_path(:category_id => category[1]),  {:remote => true } %>
-          </li>
-        <%end%>
-      </ul>
-  </div>
-
-  <div class="col-sm-12">
-    <%= form_tag(search_riders_path , method: "get", :class => "form-inline",:remote => true ) do %>
-     <div class="form-group">
-      <%= label_tag(:rider_name, "Search By name:") %>
-      <%= text_field_tag(:rider_name) %>
-      <%= submit_tag("Search", :class => "form-control") %>
+<div class="container">
+  <div class="row">
+    <div class="col-sm-12 text-center">
+      <h1>Lista de Corredor</h1>
     </div>
-    <% end %>
-  </div>
 
-  <div class="col-sm-12 text-right">
-    <%= link_to "Nuevo Corredor", new_rider_path, class: "btn btn-primary" %>
-    <%= link_to "Ver Todos", riders_path, class: "btn btn-success" %>
-  </div>
 
-  <div class="col-sm-12">
-    <div class="table-responsive" id="riders-index-table">
-      <%= render :partial => 'riders', :locals => {riders: @riders} %>
+    <div class="col-sm-12 text-right">
+       <ul class="nav nav-pills">
+        <%@categories.each_with_index do |category, index| %>
+            <li class="<%= 'active' if params[:category_id] == category[1]%>" id="<%= category[1] %>">
+              <%= link_to category[0].upcase, riders_path(:category_id => category[1]),  {:remote => true } %>
+            </li>
+          <%end%>
+        </ul>
     </div>
+
+    <div class="col-sm-12">
+      <%= form_tag(search_riders_path , method: "get", :class => "form-inline",:remote => true ) do %>
+       <div class="form-group">
+        <%= label_tag(:rider_name, "Search By name:") %>
+        <%= text_field_tag(:rider_name) %>
+        <%= submit_tag("Search", :class => "form-control") %>
+      </div>
+      <% end %>
+    </div>
+
+    <div class="col-sm-12 text-right">
+      <%= link_to "Nuevo Corredor", new_rider_path, class: "btn btn-primary" %>
+      <%= link_to "Ver Todos", riders_path, class: "btn btn-success" %>
+    </div>
+
+    <div class="col-sm-12">
+      <div class="table-responsive" id="riders-index-table">
+        <%= render :partial => 'riders', :locals => {riders: @riders} %>
+      </div>
+    </div>
+      
   </div>
-    
+  
 </div>

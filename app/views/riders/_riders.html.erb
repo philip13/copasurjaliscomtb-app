@@ -16,7 +16,9 @@
         <td class="text-right">
           <%= link_to "<span class='glyphicon glyphicon-tasks'></span>".html_safe, rider_registers_path(rider_id: rider.id), class: "btn btn-xs btn-default" %>
           <%= link_to "<span class='glyphicon glyphicon-pencil'></span>".html_safe, edit_rider_path(rider), class: "btn btn-xs btn-primary" %>
-          <%= link_to "<span class='glyphicon glyphicon-eye-open'></span>".html_safe, rider_path(rider), class: "btn btn-xs btn-info" %>  
+          <%= link_to "<span class='glyphicon glyphicon-eye-open'></span>".html_safe, rider_path(rider), class: "btn btn-xs btn-info" %>
+          <%= link_to "<span class='glyphicon glyphicon glyphicon-trash'></span>".html_safe, rider_path(id: rider.id),
+                            method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-xs btn-warning" %>
         </td>
       </tr>
     <%end%>
