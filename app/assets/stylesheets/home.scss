@@ -1,3 +1,55 @@
 // Place all the styles related to the Home controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+.raking-container{
+  background-image: url('bicycle-bike-countryside.jpg');
+  background-size: 100% auto;
+  background-position: center;
+  background-repeat: no-repeat;
+  padding-top: 100px;
+  height: 360px;
+  @media(max-width: 767px){
+    height: 50vw;
+    padding-top: 15px;
+  }
+  @media(max-width: 550px){
+    background-size:  auto 100%;
+    height: 83vw;
+  }
+  h1{
+    color: white;
+  }
+  .raking-box{
+    // padding: 60px 15px;
+  }
+}
+
+.results-mtb-container{
+  background-color: #333333;
+  h1,h2 { color: white; }
+  padding-top: 50px;
+  height: 250px;
+  @media(max-width: 767px){
+    height: 35vw;
+    
+  }
+  @media(max-width: 550px){
+    padding-top: 15px;
+    height: 50vw;
+  }
+}
+
+.results-road-container{
+  background-color: #a8ce3b;
+  // h1,h2 { color: white; }
+  padding-top: 50px;
+  height: 250px;
+  @media(max-width: 767px){
+    height: 35vw;
+    
+  }
+  @media(max-width: 550px){
+    padding-top: 15px;
+    height: 50vw;
+  }
+}
