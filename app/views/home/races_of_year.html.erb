@@ -1,7 +1,24 @@
-<h1>Carreras Copa Sur <%= @year%></h1>
-
-
-<% @races.each do |race| %>
-  <%= link_to "#{race.title} #{race.date}", race_results_path(race_id: race.id) %>
-  <br>
-<%end%>
+<div class="container-fluid">
+  
+  <div class="row results-mtb-container">
+    <div class="col-sm-12 text-center">
+      <h2> Fechas Copa sur Jalisco MTB </h2>
+      <h1><%= @year %></h1>
+    </div>
+  </div>
+  <div class="row _padding-top-bottom-30px">
+    <div class="col-sm-12 text-center">
+      <% @races.each_with_index do |race, index| %>
+        <div class="col-sm-6 col-md-4">
+          <div class="thumbnail">
+            <div class="caption">
+              <h3><%= race.title %></h3>
+              <p>Fecha del Evento <%= race.date %></p>
+              <p><%= link_to "Ver Resultados", race_results_path(race_id: race.id) , class: "btn btn-primary"%></p>
+            </div>
+          </div>
+        </div>
+      <%end%>
+    </div>
+  </div>
+</div>
