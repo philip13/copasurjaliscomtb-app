@@ -36,7 +36,6 @@ var fill_table_via_json = {
     if (!$load_json.length) return;
 
     var json_url= $('table').data('json-url');
-    console.log(json_url);
 
   $.ajax({ 
         type: 'GET', 
@@ -45,16 +44,7 @@ var fill_table_via_json = {
         dataType:'json',
         success: function (data) { 
           data.riders.forEach(function(element) {
-            $load_json.children('tbody').append(
-              `<tr>
-                <td>${element['lugar']}</td>
-                <td>${element['numero']}</td>
-                <td>${element['tiempo']}</td>
-                <td>${element['nombre']}</td>
-                <td>${element['apellidos']}</td>
-                <td>${element['equipo']}</td>
-              </tr>`
-              );
+            $load_json.children('tbody').append("<tr><td>"+element['lugar']+"</td><td>"+element['numero']+"</td><td>"+element['tiempo']+"</td><td>"+element['nombre']+"</td><td>"+element['apellidos']+"</td><td>"+element['equipo']+"</td></tr>");
           });
         }
     });
