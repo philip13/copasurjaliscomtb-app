@@ -10,11 +10,11 @@
         <% @categories.each_with_index do |category, index| %>
           <% if @race.date.year == 2017 %>
             <li class="<%= 'active' if category[0]  == 'Elite' %>" id="<%= category[1] %>">
-              <%= link_to "#{category[0]}".upcase , race_results_path(race_id: @race.id, category: category[1])%>
+              <%= link_to "#{category[0]}".upcase , race_results_path(race_id: @race.id, category: category[1]), {:remote => true }%>
             </li>
           <%elsif category[2] %>
-            <li class="<%= 'active' if category[0]  == 'Elite' %>" id="<%= category[1] %>">
-              <%= link_to "#{category[0]}".upcase , race_results_path(race_id: @race.id, category: category[1])%>
+            <li class="<%= 'active' if category[0]  == 'Elite' %> category-button" id="<%= category[1] %>">
+              <%= link_to "#{category[0]}".upcase , race_results_path(race_id: @race.id, category: category[1]), {:remote => true }%>
             </li>
           <%end%>
         <%end%>
