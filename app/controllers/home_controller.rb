@@ -19,6 +19,7 @@ class HomeController < ApplicationController
 
   def races_of_year
     @races = Race.get_races_of_range Date.new(@year, 1, 1), Date.new(@year, 12, 31)
+
   end
 
   def race_results
@@ -27,6 +28,10 @@ class HomeController < ApplicationController
     @race = Race.find params[:race_id] 
 
     @riders_results = Register.get_race_result_by_category @race.id ,category_id unless @race.nil?
+    respond_to do |format|
+      format.html
+      format.js
+    end
   end
 
   def road
