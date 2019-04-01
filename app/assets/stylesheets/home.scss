@@ -1,3 +1,21 @@
+.home-full-bg{
+  background-image: url('https://res.cloudinary.com/felipe-de-jesus-cuevas/image/upload/c_scale,e_blur:100,q_10,w_1200/v1554146216/copa%20sur/sport-3730211_1920.jpg');
+  height: 100vh;
+  background-size: auto 100%;
+  background-position: center;
+  color: white;
+  .jumbotron{
+    background-color: transparent;
+  }
+  .bg-black-65{
+    min-height: 100vh;
+  }
+}
+
+.bg-black-65{
+  background-color: rgba(0, 0, 0, 0.65);
+}
+
 .raking-container{
   background-color: #875052;
   background-image: url('bicycle-bike-countryside.jpg');
