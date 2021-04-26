@@ -19,31 +19,23 @@
 var auto_setting_points ={
   to_race_result: function(){
     var result = parseInt( $("#register_race_result").val() );
+
     var points = 0;
-    if (! isNaN(result) ){
-      switch(result) {
-        case result <= 4: // 1 2 3 4
-          // code block
-           points = (75 -((result-1 )*10) );
-          break;
-        case (result >4 && result <= 11):
-          // code block
-          points = (60 -((result-1 )*5) );
-          break;
-        case (result >11 && result < 20):
-          points = (20 -((result-1 )*1) )
-          break;
-        case (result >20):
-          points = 1;
-          break;
-        default:
-          0
-          // code block
+    if (! isNaN(result) ) {     
+      if (result <= 4) {
+        points = (75 -((result-1 )*10) );
+      } 
+      else if (result >4 && result <= 11){
+        points = (60 -((result-1 )*5) );
       }
-      if( result < 11 ){
-        points = (50-((result-1 )*5));
-      }else{ points = 5; }
-      
+      else if ( result >11 && result < 20 ) {
+        points = (20 -((result-1 )*1) )
+      } 
+      else if (result >20) {
+        points = 1;
+      } else {
+        points = 0;
+      }      
     }
     $("#register_points").val(points);
   }
