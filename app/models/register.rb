@@ -11,7 +11,7 @@ class Register < ApplicationRecord
   end
 
   def self.get_race_result_by_category race_id, category_id
-    self.select("riders.first_name as first_name, riders.last_name as last_name, registers.points as points_earned, registers.category, registers.rider_id").joins(:rider, :race).where("race_id = ? AND category = ?", race_id, category_id).order("points_earned desc")
+    self.select("riders.first_name as first_name, riders.last_name as last_name, registers.points as points_earned, registers.category, registers.rider_id").joins(:rider, :race).where("race_id = ? AND category = ?", race_id, category_id).order("points_earned desc") #race_result
   end
 
 end
