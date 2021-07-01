@@ -3,7 +3,7 @@ development:
   encoding: unicode
   database: copasur_development
   pool: 5
-  username: postgres
+  username: phillip
   password: devpass17
 
 test:
@@ -11,5 +11,5 @@ test:
   encoding: unicode
   database: copasur_test
   pool: 5
-  username: postgres
+  username: phillip
   password: devpass17

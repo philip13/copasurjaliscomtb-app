@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  register: one
+  rider: one
+  start_lap: 2021-06-16 17:45:03
+  end_lap: 2021-06-16 17:45:03
+
+two:
+  register: two
+  rider: two
+  start_lap: 2021-06-16 17:45:03
+  end_lap: 2021-06-16 17:45:03

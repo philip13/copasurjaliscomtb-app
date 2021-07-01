@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180531005605) do
+ActiveRecord::Schema.define(version: 20210616224503) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -24,6 +24,17 @@ ActiveRecord::Schema.define(version: 20180531005605) do
     t.datetime "updated_at", null: false
     t.string "group"
     t.boolean "active", default: true
+  end
+
+  create_table "race_time_lapses", force: :cascade do |t|
+    t.bigint "register_id"
+    t.bigint "rider_id"
+    t.datetime "start_lap"
+    t.datetime "end_lap"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["register_id"], name: "index_race_time_lapses_on_register_id"
+    t.index ["rider_id"], name: "index_race_time_lapses_on_rider_id"
   end
 
   create_table "races", id: :serial, force: :cascade do |t|
@@ -80,6 +91,8 @@ ActiveRecord::Schema.define(version: 20180531005605) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "race_time_lapses", "registers"
+  add_foreign_key "race_time_lapses", "riders"
   add_foreign_key "registers", "races"
   add_foreign_key "registers", "riders"
 end
