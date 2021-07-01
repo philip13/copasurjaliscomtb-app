@@ -57,3 +57,8 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem 'bootstrap-sass', '~> 3.3', '>= 3.3.7'
 gem 'devise'
 gem 'pg_search'
+
+# For API
+gem 'grape'
+gem 'rack-cors'
+gem 'grape-active_model_serializers'
