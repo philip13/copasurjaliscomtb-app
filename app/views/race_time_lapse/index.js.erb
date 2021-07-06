@@ -1,0 +1,16 @@
+// index.js.erb
+$('#formStartLap').addClass('hidden');
+
+var timeNowContainer = $('#timeNowContainer').removeClass('hidden');
+
+// var timeNow = 
+$('#startRace').text("<%= @date_time_start_lap.strftime("%H:%M:%S")%>");
+
+$('#newLapButton').html("<%= escape_javascript link_to 'New Lap +', create_time_lap_path(:race_id => @race.id, :start_lap => @date_time_start_lap), {:remote => true, :class => 'btn btn-success btn-lg active', :method => :post } %>" );
+
+setInterval( () => {
+	$('#timeNow').text( moment().format('HH : mm : ss ') );
+	
+}, 100)
+
+

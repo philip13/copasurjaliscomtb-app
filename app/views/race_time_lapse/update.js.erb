@@ -1,0 +1,5 @@
+
+<% unless @race_time_lapse.errors.any? %>
+	$("#myModal").modal('hide');
+	$('#<%= @race_time_lapse.id %>').find(".padNumb").text(<%= @race_time_lapse.pad_number%>);
+<%end%>

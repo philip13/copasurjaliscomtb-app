@@ -1,0 +1,18 @@
+<table class="table table-hover table-striped">
+  <thead>
+    <tr>
+      <th>#</th>
+      <th>Start Lap</th>
+      <th>End Lap</th>
+      <th>Pad Number</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody id="tbodyRaceTimeLapses">
+    <% unless race_time_lapses.nil? %>
+      <% race_time_lapses.each do |race_time_lapse| %>
+      <%= render :partial => 'tr_race_time_lapses', :locals => {race_time_lapse: race_time_lapse} %>
+      <%end%>
+    <% end %>
+  </tbody>
+</table>
