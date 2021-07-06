@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  get 'race_time_lapse/index'
+
+  get 'race_time_lapse/update'
+
   devise_for :users
   get 'home/index'
   get '/ranking/:year', to: 'home#ranking', as: 'ranking'
@@ -16,6 +20,10 @@ Rails.application.routes.draw do
   get '/search_riders', to: 'riders#search_riders', as: 'search_riders'
 
   resources :races, :categories
+  resources :race_time_lapse
+
+  post 'race_time_lapse/race_time_lapse_new' =>"race_time_lapse#create_time_lap", :as => :create_time_lap
+
 
   mount API::Base, at: "/"
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
