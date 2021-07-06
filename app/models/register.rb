@@ -1,6 +1,7 @@
 class Register < ApplicationRecord
   belongs_to :race
   belongs_to :rider
+  validates :pad_number, presence: true
 
   def self.get_registers_by_rider_id rider_id
     self.joins(:race).where("rider_id = ?", rider_id).order("races.date ASC")
