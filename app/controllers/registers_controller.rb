@@ -48,7 +48,7 @@ class RegistersController < ApplicationController
 
   private
   def register_params
-    params.require(:register).permit(:category, :race_id, :rider_id, :race_result, :points)
+    params.require(:register).permit(:category, :race_id, :rider_id, :race_result, :points, :pad_number)
   end
 
 
