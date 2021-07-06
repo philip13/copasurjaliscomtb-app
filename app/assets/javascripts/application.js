@@ -13,6 +13,8 @@
 //= require jquery
 //= require jquery_ujs
 //= require bootstrap-sprockets
+//= require moment
+//= require bootstrap-datetimepicker
 //= require turbolinks
 //= require_tree .
 
@@ -67,4 +69,5 @@ document.addEventListener("turbolinks:load", function() {
     auto_setting_points.to_race_result();
   });
   fill_table_via_json.print_data_tbody();
+  $('#datetimepicker3').datetimepicker({ format: 'HH:mm'});
 });
